@@ -3,8 +3,8 @@ name: Action Workflow
 on:
   push:
   # and the target with some regex to match specific  branch namess
-    branches:
-      - master
+    branches: [CIIgradle-abhishek]
+  
 
 jobs:
   run-github-actions:
