@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Hello Action
         id: hello
-        uses: actions/simple-java-maven-app@v1
+        uses: actions/hello-world-javascript-action@v1
         with:
           say-hi-to: githubactions
           
