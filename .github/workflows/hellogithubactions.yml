@@ -1,6 +1,10 @@
 name: Action Workflow
 
-on: [push]
+on:
+  push:
+  # and the target with some regex to match specific  branch namess
+    branches:
+      - master
 
 jobs:
   run-github-actions:
