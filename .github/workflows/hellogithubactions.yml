@@ -17,5 +17,5 @@ jobs:
           say-hi-to: githubactions
           
       - name: Time now
-        run: echo "{{ steps.hellp.outputs.time }}"
+        run: echo "{{ steps.hello.outputs.time }}"
       
