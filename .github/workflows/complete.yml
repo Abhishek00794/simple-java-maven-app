@@ -1,0 +1,47 @@
+name: Build with Sonar and Checkmarx Gates
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  MAVEN_OPTS: "-Dmaven.repo.local=${GITHUB_WORKSPACE}/.m2/repository"
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  CHECKMARX_TOKEN: ${{ secrets.CHECKMARX_TOKEN }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: 14
+
+    - name: Cache Maven Dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+    - name: Build with Maven
+      run: mvn -B clean install
+
+    - name: Test with Maven
+      run: mvn test
+
+    - name: Run Sonar Analysis
+      uses: sonarsource/sonarqube-github-action@master
+      with:
+        args: -Dsonar.login=$SONAR_TOKEN
+
+    - name: Run Checkmarx Scan
+      uses: checkmarx-ltd/github-action@v2
+      with:
+        args: /CxConsole /CxServer=${{ env.CHECKMARX_SERVER }} /CxUser=github /CxPassword=$CHECKMARX_TOKEN /ProjectName=MyProject /ScanType=FullScan /ReportXML=checkmarx_results.xml
