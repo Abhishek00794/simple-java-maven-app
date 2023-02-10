@@ -2,7 +2,7 @@ name: Build with Sonar and Checkmarx Gates
 
 on:
   push:
-    branches: [ main ]
+    branches: [ CIIgradle-abhishek ]
 
 env:
   MAVEN_OPTS: "-Dmaven.repo.local=${GITHUB_WORKSPACE}/.m2/repository"
