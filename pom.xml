@@ -53,7 +53,9 @@
           <configuration>
             <projectName>My Project Name</projectName>
             <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
-            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+            <jsonFiles>
+              <jsonFile>${project.build.directory}/cucumber.json</jsonFile>
+            </jsonFiles>
           </configuration>
         </execution>
       </executions>
