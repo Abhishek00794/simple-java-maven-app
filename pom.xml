@@ -39,6 +39,25 @@
           </archive>
         </configuration>
       </plugin>
+      <plugin>
+      <groupId>net.masterthought</groupId>
+      <artifactId>maven-cucumber-reporting</artifactId>
+      <version>5.6.0</version>
+      <executions>
+        <execution>
+          <id>generate-report</id>
+          <phase>post-integration-test</phase>
+          <goals>
+            <goal>generate</goal>
+          </goals>
+          <configuration>
+            <projectName>My Project Name</projectName>
+            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
+            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
           <plugin>
       <groupId>org.jacoco</groupId>
       <artifactId>jacoco-maven-plugin</artifactId>
