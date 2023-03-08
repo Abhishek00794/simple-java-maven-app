@@ -22,8 +22,8 @@ jobs:
       - name: Run Cucumber tests and generate JSON report
         run: mvn clean verify
         
-#       - name: Generate Cucumber report
-#         run: mvn net.masterthought:maven-cucumber-reporting:5.5.3:generate
+      - name: Generate Cucumber report
+        run: mvn net.masterthought:cucumber-reporting:5.5.3:generate
         
       - name: Upload report
         uses: actions/upload-artifact@v2
