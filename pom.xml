@@ -18,6 +18,10 @@
         <id>mvnrepository</id>
         <url>https://mvnrepository.com/</url>
     </repository>
+    <repository>
+        <id>bintray</id>
+        <url>https://dl.bintray.com/alexey-gk/maven/</url>
+    </repository>
 </repositories>
 
   <dependencies>
