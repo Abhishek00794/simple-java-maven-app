@@ -73,7 +73,33 @@
       </executions>
     </plugin>
       
-
+      
+  <plugins>
+    <plugin>
+      <groupId>net.masterthought</groupId>
+      <artifactId>maven-cucumber-reporting</artifactId>
+      <version>5.5.3</version>
+      <executions>
+        <execution>
+          <id>generate-report</id>
+          <phase>post-integration-test</phase>
+          <goals>
+            <goal>generate</goal>
+          </goals>
+          <configuration>
+            <projectName>MyProject</projectName>
+            <outputDirectory>${project.build.directory}/cucumber-report</outputDirectory>
+            <inputDirectory>${project.build.directory}/cucumber-json</inputDirectory>
+            <jsonFiles>
+              <param>cucumber.json</param>
+            </jsonFiles>
+            <parallelTesting>false</parallelTesting>
+            <checkBuildResult>false</checkBuildResult>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
       
           <plugin>
       <groupId>org.jacoco</groupId>
