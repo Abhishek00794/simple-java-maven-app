@@ -8,10 +8,11 @@
 name: Java CI with Gradle
 
 on:
-  workflow_dispatch:
   push:
     branches-ignore:
       -'*'
+  workflow_dispatch:
+  
   
 jobs:
   build:
