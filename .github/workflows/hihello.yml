@@ -3,8 +3,7 @@ name: Java CI with Gradle
 on:
   workflow_dispatch:
   push:
-    branches-ignore:
-      -'feature/*'
+    branches: [master]
   
 jobs:
   build:
