@@ -1,9 +1,12 @@
-name: Java CI with Gradle
-
 on:
   workflow_dispatch:
   push:
-    branches: [master]
+
+
+name: Java CI with Abhishek
+
+
+
   
 jobs:
   build:
