@@ -1,4 +1,4 @@
-name: Java CI with Gradle
+name: Java CI with Gradle in Feature branch
 
 on:
   workflow_dispatch:
