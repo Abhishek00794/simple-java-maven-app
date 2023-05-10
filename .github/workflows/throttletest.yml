@@ -12,7 +12,7 @@ jobs:
       matrix:
         max_parallel: [1]
     steps:
-      - run: sleep 30
+      - run: sleep 100
       - run: echo "Sample job 2"
       - run: echo "Sample job 3"
   
@@ -22,7 +22,7 @@ jobs:
       matrix:
         max_parallel: [1]
     steps:
-      - run: sleep 30
+      - run: sleep 100
       - run: echo "Prebuild job 2"
       - run: echo "Prebuild job 3"
 
@@ -32,6 +32,6 @@ jobs:
       matrix:
         max_parallel: [1]
     steps:
-      - run: sleep 30
+      - run: sleep 100
       - run: echo "Build job 2"
       - run: echo "Build job 3"
