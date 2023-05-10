@@ -1,0 +1,29 @@
+name: example-workflow
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build1:
+    runs-on: [ self-hosted ]
+    steps:
+      - run: echo "This is build1"
+  
+  build2:
+    runs-on: [ self-hosted ]
+    steps:
+      - run: echo "This is build2"
+  
+  build3:
+    runs-on: [ self-hosted ]
+    steps:
+      - run: echo "This is build3"
+
+  build:
+    runs-on: [ self-hosted ]
+    strategy:
+      max-parallel: 2
+    needs: [build1, build2, build3]
+    steps:
+      - run: echo "This is the build step"
