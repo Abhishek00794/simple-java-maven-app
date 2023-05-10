@@ -10,7 +10,7 @@ jobs:
     runs-on: [ubuntu-latest]
     strategy:
       matrix:
-        max_parallel: [2]
+        max_parallel: [1]
     steps:
       - run: sleep 30
       - run: echo "Sample job 2"
@@ -20,7 +20,7 @@ jobs:
     runs-on: [ubuntu-latest]
     strategy:
       matrix:
-        max_parallel: [2]
+        max_parallel: [1]
     steps:
       - run: sleep 30
       - run: echo "Prebuild job 2"
@@ -30,7 +30,7 @@ jobs:
     runs-on: [ubuntu-latest]
     strategy:
       matrix:
-        max_parallel: [2]
+        max_parallel: [1]
     steps:
       - run: sleep 30
       - run: echo "Build job 2"
