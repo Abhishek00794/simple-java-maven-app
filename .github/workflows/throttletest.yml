@@ -7,22 +7,22 @@ on:
 
 jobs:
   build1:
-    runs-on: [ self-hosted ]
+    runs-on: [ ubuntu-latest ]
     steps:
       - run: echo "This is build1"
   
   build2:
-    runs-on: [ self-hosted ]
+    runs-on: [ ubuntu-latest ]
     steps:
       - run: echo "This is build2"
   
   build3:
-    runs-on: [ self-hosted ]
+    runs-on: [ ubuntu-latest ]
     steps:
       - run: echo "This is build3"
 
   build:
-    runs-on: [ self-hosted ]
+    runs-on: [ ubuntu-latest ]
     strategy:
       max-parallel: 2
     needs: [build1, build2, build3]
