@@ -4,36 +4,34 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
-
+  
 jobs:
   sample:
     runs-on: [ubuntu-latest]
+    strategy:
+      matrix:
+        max_parallel: [2]
     steps:
-      - run: echo "Hello, world!"
-
+      - run: echo "Sample job 1"
+      - run: echo "Sample job 2"
+      - run: echo "Sample job 3"
+  
   prebuild:
     runs-on: [ubuntu-latest]
-    concurrency:
-      group: my-concurrency
-      max: 2
+    strategy:
+      matrix:
+        max_parallel: [2]
     steps:
-      - run: |
-          echo "This is the PreBuild job."
-          sleep 5
-          echo "PreBuild job complete."
+      - run: echo "Prebuild job 1"
+      - run: echo "Prebuild job 2"
+      - run: echo "Prebuild job 3"
 
   build:
     runs-on: [ubuntu-latest]
-    concurrency:
-      group: my-concurrency
-      max: 2
+    strategy:
+      matrix:
+        max_parallel: [2]
     steps:
-      - run: |
-          echo "This is the Build job."
-          sleep 5
-          echo "Build job complete."
-
-  postbuild:
-    runs-on: [ubuntu-latest]
-    steps:
-      - run: echo "This is the PostBuild job."
+      - run: echo "Build job 1"
+      - run: echo "Build job 2"
+      - run: echo "Build job 3"
