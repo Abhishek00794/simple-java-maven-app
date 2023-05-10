@@ -1,0 +1,47 @@
+name: Parallel Jobs Test
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: parallel-jobs-test
+  cancel-in-progress: true
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 1
+        run: sleep 50
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 2
+        run: sleep 50
+
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 3
+        run: sleep 50
+
+  job4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 4
+        run: sleep 50
+
+  job5:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 5
+        run: sleep 50
+
+  job6:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 6
+        run: sleep 50
