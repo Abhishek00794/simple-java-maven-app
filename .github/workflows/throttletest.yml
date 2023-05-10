@@ -6,25 +6,34 @@ on:
   workflow_dispatch:
 
 jobs:
-  build1:
-    runs-on: [ ubuntu-latest ]
+  sample:
+    runs-on: [ubuntu-latest]
     steps:
-      - run: echo "This is build1"
-  
-  build2:
-    runs-on: [ ubuntu-latest ]
+      - run: echo "Hello, world!"
+
+  prebuild:
+    runs-on: [ubuntu-latest]
+    concurrency:
+      group: my-concurrency
+      max: 2
     steps:
-      - run: echo "This is build2"
-  
-  build3:
-    runs-on: [ ubuntu-latest ]
-    steps:
-      - run: echo "This is build3"
+      - run: |
+          echo "This is the PreBuild job."
+          sleep 5
+          echo "PreBuild job complete."
 
   build:
-    runs-on: [ ubuntu-latest ]
-    strategy:
-      max-parallel: 2
-    needs: [build1, build2, build3]
+    runs-on: [ubuntu-latest]
+    concurrency:
+      group: my-concurrency
+      max: 2
     steps:
-      - run: echo "This is the build step"
+      - run: |
+          echo "This is the Build job."
+          sleep 5
+          echo "Build job complete."
+
+  postbuild:
+    runs-on: [ubuntu-latest]
+    steps:
+      - run: echo "This is the PostBuild job."
