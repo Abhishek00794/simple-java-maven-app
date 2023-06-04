@@ -1,0 +1,78 @@
+name: TX_Load_Group_1010
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  LG_Data_Watcher_1011:
+    runs-on: [gitapnap03]
+    steps:
+      - name: LG Data Watcher
+        # Update with the appropriate steps for LG Data Watcher
+
+  Pre_Load_Register_Usage_TX_1020:
+    needs: LG_Data_Watcher_1011
+    runs-on: [self-hosted, linux]
+    concurrency:
+      group: my-concurrency
+      cancel-in-progress: false
+    steps:
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.AIX_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan MDM2INTS1 >> ~/.ssh/known_hosts
+      
+      - name: List contents of ~/.ssh
+        run: ls -al ~/.ssh
+      
+      - name: Pre Load Usage TX 1015
+        # Update with the appropriate steps for Pre Load Usage TX 1015
+
+      - name: Pre Load Usage TX 1020C
+        # Update with the appropriate steps for Pre Load Usage TX 1020C
+
+  Load_Usage_TX_1020:
+    needs: Pre_Load_Register_Usage_TX_1020
+    runs-on: [self-hosted, linux]
+    concurrency:
+      group: my-concurrency
+      cancel-in-progress: false
+    steps:
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.AIX_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan MDM2INTS1 >> ~/.ssh/known_hosts
+      
+      - name: List contents of ~/.ssh
+        run: ls -al ~/.ssh
+      
+      - name: Load Usage TX 1020A
+        # Update with the appropriate steps for Load Usage TX 1020A
+
+      - name: Load Usage TX 1020B
+        # Update with the appropriate steps for Load Usage TX 1020B
+
+  Load_Monitor_TX_1021:
+    needs: Load_Usage_TX_1020
+    runs-on: [self-hosted, linux]
+    concurrency:
+      group: my-concurrency
+      cancel-in-progress: false
+    steps:
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.AIX_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan MDM2INTS1 >> ~/.ssh/known_hosts
+      
+      - name: List contents of ~/.ssh
+        run: ls -al ~/.ssh
+      
+      - name: Load Monitor TX
+        # Update with the appropriate steps for Load Monitor TX
