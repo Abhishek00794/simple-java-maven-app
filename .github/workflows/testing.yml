@@ -6,73 +6,65 @@ on:
 
 jobs:
   LG_Data_Watcher_1011:
-    runs-on: [gitapnap03]
+    runs-on: ubuntu-latest
     steps:
       - name: LG Data Watcher
+        run: |
+          echo "Hello"
         # Update with the appropriate steps for LG Data Watcher
 
   Pre_Load_Register_Usage_TX_1020:
     needs: LG_Data_Watcher_1011
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu-latest
     concurrency:
       group: my-concurrency
       cancel-in-progress: false
     steps:
       - name: Configure SSH
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.AIX_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan MDM2INTS1 >> ~/.ssh/known_hosts
+          echo "Hello"
       
-      - name: List contents of ~/.ssh
-        run: ls -al ~/.ssh
       
       - name: Pre Load Usage TX 1015
+        run: |
+          echo "Hello"
         # Update with the appropriate steps for Pre Load Usage TX 1015
 
       - name: Pre Load Usage TX 1020C
+        run: |
+          echo "Hello"
         # Update with the appropriate steps for Pre Load Usage TX 1020C
 
   Load_Usage_TX_1020:
     needs: Pre_Load_Register_Usage_TX_1020
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu-latest
     concurrency:
       group: my-concurrency
       cancel-in-progress: false
     steps:
       - name: Configure SSH
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.AIX_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan MDM2INTS1 >> ~/.ssh/known_hosts
-      
-      - name: List contents of ~/.ssh
-        run: ls -al ~/.ssh
-      
+          echo "Hello"
+                
       - name: Load Usage TX 1020A
-        # Update with the appropriate steps for Load Usage TX 1020A
+        run: |
+          echo "Hello"
 
       - name: Load Usage TX 1020B
-        # Update with the appropriate steps for Load Usage TX 1020B
+        run: |
+          echo "Hello"
 
   Load_Monitor_TX_1021:
     needs: Load_Usage_TX_1020
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu-latest
     concurrency:
       group: my-concurrency
       cancel-in-progress: false
     steps:
       - name: Configure SSH
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.AIX_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan MDM2INTS1 >> ~/.ssh/known_hosts
-      
-      - name: List contents of ~/.ssh
-        run: ls -al ~/.ssh
+          echo "Hello"
       
       - name: Load Monitor TX
-        # Update with the appropriate steps for Load Monitor TX
+        run: |
+          echo "Hello"
