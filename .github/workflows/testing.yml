@@ -8,63 +8,54 @@ jobs:
   LG_Data_Watcher_1011:
     runs-on: ubuntu-latest
     steps:
-      - name: LG Data Watcher
-        run: |
-          echo "Hello"
-        # Update with the appropriate steps for LG Data Watcher
+      - name: Data Watcher Step
+        run: echo "Running Data Watcher Step"
 
   Pre_Load_Register_Usage_TX_1020:
-    needs: LG_Data_Watcher_1011
     runs-on: ubuntu-latest
-    concurrency:
-      group: my-concurrency
-      cancel-in-progress: false
+    needs: LG_Data_Watcher_1011
     steps:
-      - name: Configure SSH
-        run: |
-          echo "Hello"
-      
-      
-      - name: Pre Load Usage TX 1015
-        run: |
-          echo "Hello"
-        # Update with the appropriate steps for Pre Load Usage TX 1015
+      - name: Pre_Load_Register_Usage_TX_1020 Step
+        run: echo "Running Pre_Load_Register_Usage_TX_1020 Step"
 
-      - name: Pre Load Usage TX 1020C
-        run: |
-          echo "Hello"
-        # Update with the appropriate steps for Pre Load Usage TX 1020C
+  Pre_Load_Usage_TX_1015:
+    runs-on: ubuntu-latest
+    needs: Pre_Load_Register_Usage_TX_1020
+    steps:
+      - name: Pre_Load_Usage_TX_1015 Step
+        run: echo "Running Pre_Load_Usage_TX_1015 Step"
+
+  Pre_Load_Usage_TX_1020C:
+    runs-on: ubuntu-latest
+    needs: Pre_Load_Register_Usage_TX_1020
+    steps:
+      - name: Pre_Load_Usage_TX_1020C Step
+        run: echo "Running Pre_Load_Usage_TX_1020C Step"
 
   Load_Usage_TX_1020:
-    needs: Pre_Load_Register_Usage_TX_1020
     runs-on: ubuntu-latest
-    concurrency:
-      group: my-concurrency
-      cancel-in-progress: false
+    needs: [Pre_Load_Usage_TX_1015, Pre_Load_Usage_TX_1020C]
     steps:
-      - name: Configure SSH
-        run: |
-          echo "Hello"
-                
-      - name: Load Usage TX 1020A
-        run: |
-          echo "Hello"
+      - name: Load_Usage_TX_1020 Step
+        run: echo "Running Load_Usage_TX_1020 Step"
 
-      - name: Load Usage TX 1020B
-        run: |
-          echo "Hello"
+  Load_Usage_TX_1020A:
+    runs-on: ubuntu-latest
+    needs: Load_Usage_TX_1020
+    steps:
+      - name: Load_Usage_TX_1020A Step
+        run: echo "Running Load_Usage_TX_1020A Step"
+
+  Load_Usage_TX_1020B:
+    runs-on: ubuntu-latest
+    needs: Load_Usage_TX_1020
+    steps:
+      - name: Load_Usage_TX_1020B Step
+        run: echo "Running Load_Usage_TX_1020B Step"
 
   Load_Monitor_TX_1021:
-    needs: Load_Usage_TX_1020
     runs-on: ubuntu-latest
-    concurrency:
-      group: my-concurrency
-      cancel-in-progress: false
+    needs: [Load_Usage_TX_1020A, Load_Usage_TX_1020B]
     steps:
-      - name: Configure SSH
-        run: |
-          echo "Hello"
-      
-      - name: Load Monitor TX
-        run: |
-          echo "Hello"
+      - name: Load_Monitor_TX_1021 Step
+        run: echo "Running Load_Monitor_TX_1021 Step"
