@@ -1,11 +1,11 @@
 name: Workflow C
 
 on:
-  workflow_dispatch:
   workflow_run:
     workflows: [Workflow B]
     types:
       - completed
+  workflow_dispatch:
 
 jobs:
   build:
