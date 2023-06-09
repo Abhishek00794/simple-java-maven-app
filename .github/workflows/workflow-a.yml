@@ -1,7 +1,6 @@
 name: Workflow A
 
 on:
-  workflow_dispatch:
   workflow_run:
     workflows: [Workflow B]
     types:
