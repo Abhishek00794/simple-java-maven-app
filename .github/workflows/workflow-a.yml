@@ -11,4 +11,4 @@ jobs:
         run: echo "Workflow A completed"
 
       - name: Print Workflow Information
-        run: echo "Triggered by ${{ github.event.workflow_run.workflow.name }} with run ID ${{ github.event.workflow_run.id }}"
+        run: echo "Triggered by ${{ github.event.workflow }} with run ID ${{ github.run_id }}"
