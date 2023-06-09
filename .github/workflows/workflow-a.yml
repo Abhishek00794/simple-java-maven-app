@@ -1,10 +1,6 @@
 name: Workflow A
 
 on:
-  workflow_run:
-    workflows: [Workflow B]
-    types:
-      - completed
   workflow_dispatch:
 
 jobs:
