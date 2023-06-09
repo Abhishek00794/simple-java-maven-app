@@ -1,0 +1,18 @@
+name: Workflow C
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [Workflow B]
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Workflow C
+        run: echo "Workflow C completed"
+
+      - name: Print Workflow Information
+        run: echo "Triggered by ${{ github.event.workflow_run.workflow.name }} with run ID ${{ github.event.workflow_run.id }}"
