@@ -14,5 +14,5 @@ jobs:
         run: echo "Triggered by ${{ github.event.workflow }} with run ID ${{ github.run_id }}"
         
       - name: Run Workflow B
-        uses: ./.github/workflows/workflow-b.yml  # Reference to Workflow B YAML file
+        uses: Abhishek00794/simple-java-maven-app/.github/workflows/workflow-b.yml@main  # Reference to Workflow B YAML file
 
