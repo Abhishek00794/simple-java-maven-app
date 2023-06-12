@@ -5,7 +5,7 @@ on:
 
 jobs:
   Hello:
-    uses: Abhishek00794/simple-java-maven-app/.github/workflows/workflow-b.yml@main  # Reference to Workflow B YAML file
+    uses: Abhishek00794/simple-java-maven-app/.github/workflows/workflow-b.yml@master  # Reference to Workflow B YAML file
 
   build:
     runs-on: ubuntu-latest
