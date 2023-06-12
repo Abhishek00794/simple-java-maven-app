@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
 
 jobs:
+  Hello:
+    uses: Abhishek00794/simple-java-maven-app/.github/workflows/workflow-b.yml@main  # Reference to Workflow B YAML file
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -13,6 +16,4 @@ jobs:
       - name: Print Workflow Information
         run: echo "Triggered by ${{ github.event.workflow }} with run ID ${{ github.run_id }}"
         
-      - name: Run Workflow B
-        uses: Abhishek00794/simple-java-maven-app/.github/workflows/workflow-b.yml@main  # Reference to Workflow B YAML file
-
+      
