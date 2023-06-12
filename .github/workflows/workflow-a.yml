@@ -12,3 +12,7 @@ jobs:
 
       - name: Print Workflow Information
         run: echo "Triggered by ${{ github.event.workflow }} with run ID ${{ github.run_id }}"
+        
+      - name: Run Workflow B
+        uses: ./.github/workflows/workflow-b.yaml  # Reference to Workflow B YAML file
+
