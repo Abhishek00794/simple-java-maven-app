@@ -13,13 +13,38 @@
    <maven.compiler.source>1.6</maven.compiler.source>
    <maven.compiler.target>1.6</maven.compiler.target>
  </properties>
-  
+  <repositories>
+    <repository>
+        <id>mvnrepository</id>
+        <url>https://mvnrepository.com/</url>
+    </repository>
+    <repository>
+        <id>bintray</id>
+        <url>https://dl.bintray.com/alexey-gk/maven/</url>
+    </repository>
+    <repository>
+    <id>sonatype-snapshots</id>
+    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+</repository>
+</repositories>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+    <groupId>net.masterthought</groupId>
+    <artifactId>cucumber-reporting</artifactId>
+    <version>LATEST</version>
+</dependency>
+
+    <dependency>
+    <groupId>net.masterthought</groupId>
+    <artifactId>cucumber-reporting</artifactId>
+    <version>5.5.3</version>
     </dependency>
   </dependencies>
   <build>
@@ -39,6 +64,29 @@
           </archive>
         </configuration>
       </plugin>
+      
+      <plugin>
+      <groupId>net.masterthought</groupId>
+      <artifactId>cucumber-reporting</artifactId>
+      <version>5.5.3</version>
+      <executions>
+        <execution>
+          <id>generate-report</id>
+          <phase>post-integration-test</phase>
+          <goals>
+            <goal>generate</goal>
+          </goals>
+          <configuration>
+            <projectName>My Project Name</projectName>
+            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
+            <jsonFiles>
+              <jsonFile>${project.build.directory}/cucumber.json</jsonFile>
+            </jsonFiles>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+
           <plugin>
       <groupId>org.jacoco</groupId>
       <artifactId>jacoco-maven-plugin</artifactId>

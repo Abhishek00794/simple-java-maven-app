@@ -1,0 +1,21 @@
+name: Action Workflow
+
+on:
+  push:
+  # and the target with some regex to match specific  branch namess
+    branches: [CIIgradle-abhishek]
+  
+
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello Action
+        id: hello
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          say-hi-to: githubactions
+          
+      - name: Time now
+        run: echo "{{ steps.hello.outputs.time }}"
+      
